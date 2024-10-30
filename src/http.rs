@@ -75,9 +75,6 @@ pub fn modify_user_agent(buf: &mut Vec<u8>, user_agent: &String) {
     debug!("start: {}, end: {}", start, end);
     debug!("user_agent: {}", String::from_utf8_lossy(&buf[start..end]));
 
-    if check_is_in_whitelist(buf[start + 12..end].to_vec()) {
-        return;
-    }
 
     buf.drain(start + 12..end - 1);
     let user_agent = user_agent.as_bytes();
